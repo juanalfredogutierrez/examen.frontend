@@ -20,10 +20,10 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copiar archivos construidos al directorio de nginx
-COPY --from=build /app/dist/examen.frontend /usr/share/nginx/html
+COPY --from=build /app/dist/examen.frontend/browser /usr/share/nginx/html
 
-# Copiar configuración personalizada de nginx si existe
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Copiar configuración personalizada de nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponer puerto 80
 EXPOSE 80
