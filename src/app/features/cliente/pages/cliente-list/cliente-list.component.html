@@ -1,0 +1,30 @@
+
+<button mat-raised-button color="primary" (click)="openCreate()">Nuevo</button>
+
+<table mat-table [dataSource]="clientes">
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let c">{{c.nombre}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellido">
+    <th mat-header-cell *matHeaderCellDef>Apellido</th>
+    <td mat-cell *matCellDef="let c">{{c.apellido}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let c">{{c.email}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let c">
+      <button mat-button (click)="openEdit(c)">Editar</button>
+      <button mat-button color="warn" (click)="delete(c.id)">Eliminar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['nombre','apellido','email','acciones']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['nombre','apellido','email','acciones'];"></tr>
+</table>
